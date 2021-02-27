@@ -7,8 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.sun.istack.NotNull;
-
 import accenture.enums.TipoConta;
 
 @Entity
@@ -21,24 +19,21 @@ public class Conta {
 	private int id;
 
 	@Column(name = "id_usuario", nullable = false)
-	@NotNull
 	private int idUsuario;
 	
 	@Column(name = "descricao", nullable = false)
-	@NotNull
 	private String descricao;
 	
 	@Column(name = "numero", nullable = false)
-	@NotNull
 	private String numero;
 
 	@Column(name = "tipo_conta", nullable = false)
-	@NotNull
 	private TipoConta tipoConta;
 
 	@Column(name = "saldo", nullable = false)
-	@NotNull
 	private float saldo;
+	
+	public Conta() {}
 	
 	public Conta(String numero) {
 		this.numero = numero;
