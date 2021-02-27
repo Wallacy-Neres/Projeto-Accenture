@@ -6,7 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 
 import com.sun.istack.NotNull;
@@ -30,10 +29,10 @@ public class Usuario {
 	@Size(min = 2, max = 50)
 	private String nome;
 	
-	@Column(name = "EMAIL", nullable = false, length = 30, unique = true)
+	@Column(name = "LOGIN", nullable = false, length = 50)
 	@NotNull
-	@Email
-	private String email;
+	@Size(min = 2, max = 50)
+	private String login;
 	
 	@Column(name = "CPF", nullable = false, length = 30, unique = true)
 	@NotNull
@@ -55,20 +54,20 @@ public class Usuario {
 		this.senha = senha;
 	}
 
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
 	public String getNome() {
 		return nome;
 	}
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public String getCpf() {
