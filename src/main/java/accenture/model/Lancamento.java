@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,10 +34,11 @@ public class Lancamento {
 	@Column(name = "DATA", nullable = false)
 	private LocalDate data;
 
-	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "PLANO_CONTA", referencedColumnName = "id", nullable = false)
-	private PlanoConta planoConta;
 	
+	@Column(name = "PLANO_CONTA")
+	private Long planoConta;
+	
+	@Enumerated(EnumType.STRING)
 	@Column(name = "TIPO_MOVIMENTO", nullable = false)
 	private TiposMovimento tipo;
 	
@@ -74,11 +77,11 @@ public class Lancamento {
 		this.data = data;
 	}
 
-	public PlanoConta getPlanoConta() {
+	public Long getPlanoConta() {
 		return planoConta;
 	}
 
-	public void setPlanoConta(PlanoConta planoConta) {
+	public void setPlanoConta(Long planoConta) {
 		this.planoConta = planoConta;
 	}
 
