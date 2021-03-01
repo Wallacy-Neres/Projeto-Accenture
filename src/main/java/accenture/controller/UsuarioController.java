@@ -20,9 +20,15 @@ public class UsuarioController {
 	
 	@PostMapping("/novo")
 	public ResponseEntity<Usuario> PostCadastrar(@RequestBody Usuario user){
+<<<<<<< Updated upstream
 		if(usuarioService.checaDuplicidade(user) != null)
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
 		
+=======
+		//if(usuarioService.checaDuplicidade(user) != null)
+			//return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+
+>>>>>>> Stashed changes
 		return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.CadastrarUsuario(user));
 	}
 	
