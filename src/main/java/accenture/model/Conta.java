@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import accenture.enums.TipoConta;
 
 @Entity
-@Table(name = "conta")
+@Table(name = "tb_conta")
 public class Conta {
 
 	@Id

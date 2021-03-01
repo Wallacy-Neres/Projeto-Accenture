@@ -17,7 +17,7 @@ import javax.persistence.Table;
 import accenture.enums.TiposMovimento;
 
 @Entity
-@Table(name = "lancamento")
+@Table(name = "tb_lancamento")
 public class Lancamento {
 	
 	@Id
