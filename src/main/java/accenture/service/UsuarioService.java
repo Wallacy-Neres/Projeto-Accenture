@@ -10,26 +10,36 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import accenture.enums.TipoConta;
+import accenture.model.Conta;
 import accenture.model.Usuario;
 import accenture.model.UsuarioLogin;
+import accenture.repository.ContaRepository;
 import accenture.repository.UsuarioRepository;
 
 @Service
 public class UsuarioService {
 
 	@Autowired
-	private UsuarioRepository repository;
+	private UsuarioRepository usuarioRepository;
+	
+	@Autowired
+	private ContaRepository contaRepository;
 
 	public Usuario CadastrarUsuario(Usuario usuario) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		String senhaEncoder = encoder.encode(usuario.getSenha());
 		usuario.setSenha(senhaEncoder);
-		return repository.save(usuario);
+		usuarioRepository.save(usuario);
+		Conta conta = new Conta(usuario.getLogin());
+		conta.setUsuario(usuario);
+		cadastrarConta(conta);
+		return usuario;
 	}
 
 	public Optional<UsuarioLogin> Logar(Optional<UsuarioLogin> user) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		Optional<Usuario> usuario = repository.findByLogin(user.get().getLogin());
+		Optional<Usuario> usuario = usuarioRepository.findByLogin(user.get().getLogin());
 
 		if (usuario.isPresent()) {
 			if (encoder.matches(user.get().getSenha(), usuario.get().getSenha())) {
@@ -61,10 +71,15 @@ public class UsuarioService {
 	// }
 
 	public Usuario buscaPorCpf(String cpf) {
-		return repository.findByCpf(cpf);
+		return usuarioRepository.findByCpf(cpf);
 	}
 
 	public List<Usuario> buscarTodos() {
-		return repository.findAll();
+		return usuarioRepository.findAll();
+	}
+	
+	private void cadastrarConta(Conta conta) {
+		conta.setTipoConta(TipoConta.CONTA_BANCARIA);
+		contaRepository.save(conta);
 	}
 }
