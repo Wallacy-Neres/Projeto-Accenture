@@ -1,21 +1,21 @@
 package accenture.model;
-
 import java.time.LocalDate;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import accenture.enums.TiposMovimento;
 
 @Entity
-@Table(name = "lancamento")
+@Table(name = "TB_LANCAMENTO")
 public class Lancamento {
 	
 	@Id
@@ -23,8 +23,9 @@ public class Lancamento {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idLancamento;
 	
-	@Column(name = "ID_CONTA", nullable = false)
-	private int conta;
+	@ManyToOne
+	@JoinColumn(name="ID_CONTA")
+	private Conta conta;
 	
 	@Column(name = "DESCRICAO", nullable = false)
 	private String descricao;
@@ -32,10 +33,11 @@ public class Lancamento {
 	@Column(name = "DATA", nullable = false)
 	private LocalDate data;
 
-	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "PLANO_CONTA", referencedColumnName = "id", nullable = false)
-	private PlanoConta planoConta;
 	
+	@Column(name = "PLANO_CONTA")
+	private Long planoConta;
+	
+	@Enumerated(EnumType.STRING)
 	@Column(name = "TIPO_MOVIMENTO", nullable = false)
 	private TiposMovimento tipo;
 	
@@ -50,11 +52,11 @@ public class Lancamento {
 		this.idLancamento = idLancamento;
 	}
 
-	public int getConta() {
+	public Conta getConta() {
 		return conta;
 	}
 
-	public void setConta(int conta) {
+	public void setConta(Conta conta) {
 		this.conta = conta;
 	}
 
@@ -74,11 +76,11 @@ public class Lancamento {
 		this.data = data;
 	}
 
-	public PlanoConta getPlanoConta() {
+	public Long getPlanoConta() {
 		return planoConta;
 	}
 
-	public void setPlanoConta(PlanoConta planoConta) {
+	public void setPlanoConta(Long planoConta) {
 		this.planoConta = planoConta;
 	}
 
@@ -97,6 +99,4 @@ public class Lancamento {
 	public void setValor(double valor) {
 		this.valor = valor;
 	}
-
-
 }

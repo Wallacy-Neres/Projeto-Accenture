@@ -7,6 +7,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -28,10 +30,9 @@ public class PlanoConta {
 	@Size(min = 5, max = 100)
 	private String descricao;
 	
-	@Column(name = "LOGIN", nullable = false, length = 50)
-	@NotNull
-	@Size(min = 2, max = 50)
-	private String login;
+	@ManyToOne
+	@JoinColumn(name="ID_USUARIO")
+	private Usuario usuario;
 	
 	@Column(name = "PADRAO", length = 5)
 	private Boolean padrao;
@@ -56,12 +57,13 @@ public class PlanoConta {
 		this.descricao = descricao;
 	}
 
-	public String getLogin() {
-		return login;
+
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-	public void setLogin(String login) {
-		this.login = login;
+	public void setUsuario(Usuario login) {
+		this.usuario = login;
 	}
 
 	public Boolean getPadrao() {
