@@ -6,13 +6,13 @@ package accenture.enums;
 	  TRANSFERENCIAS_CONTAS("TC"), 
 	  TRANSFERENCIAS_USUARIOS("TU");
 	  
-	  private String tipoConta;
+	  private String tipoMovimento;
 	  
 	  private TiposMovimento(String tipoConta) {
-		  this.tipoConta = tipoConta;
+		  this.tipoMovimento = tipoMovimento;
 	  }
 	  
-	  public String getTipoConta() {
-		  return tipoConta;
+	  public String getTipoMovimento() {
+		  return tipoMovimento;
 	  }
   };
