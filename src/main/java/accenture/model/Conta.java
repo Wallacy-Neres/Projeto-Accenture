@@ -2,63 +2,60 @@ package accenture.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import accenture.enums.TipoConta;
 
 @Entity
-@Table(name = "conta")
+@Table(name = "TB_CONTA")
 public class Conta {
 
 	@Id
-	@Column(name = "id_conta")
+	@Column(name = "ID_CONTA")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 
-	@Column(name = "id_usuario", nullable = false)
-	private int idUsuario;
+	@OneToOne
+	@JoinColumn(name="ID_USUARIO")
+	private Usuario usuario;
 	
-	@Column(name = "descricao", nullable = false)
-	private String descricao;
-	
-	@Column(name = "numero", nullable = false)
+	@Column(name = "NUMERO", nullable = false)
 	private String numero;
 
-	@Column(name = "tipo_conta", nullable = false)
+	@Enumerated(EnumType.STRING)
+	@Column(name = "TIPO_CONTA", nullable = false)
 	private TipoConta tipoConta;
 
-	@Column(name = "saldo", nullable = false)
+	@Column(name = "SALDO", nullable = false)
 	private float saldo;
-	
-	public Conta() {}
 	
 	public Conta(String numero) {
 		this.numero = numero;
 		this.saldo = 0;
 	}
 	
-	public int getId() {
+	public Conta() {}
+
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public int getIdUsuario() {
-		return idUsuario;
-	}
-	public void setIdUsuario(int idUsuario) {
-		this.idUsuario = idUsuario;
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-	public String getDescricao() {
-		return descricao;
-	}
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 	
 	public String getNumero() {

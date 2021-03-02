@@ -1,21 +1,22 @@
 package accenture.model;
-
 import java.time.LocalDate;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import accenture.enums.TiposMovimento;
+import accenture.enums.TipoMovimento;
 
 @Entity
-@Table(name = "lancamento")
+@Table(name = "TB_LANCAMENTO")
 public class Lancamento {
 	
 	@Id
@@ -23,8 +24,9 @@ public class Lancamento {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idLancamento;
 	
-	@Column(name = "ID_CONTA", nullable = false)
-	private int conta;
+	@ManyToOne
+	@JoinColumn(name="ID_CONTA")
+	private Conta conta;
 	
 	@Column(name = "DESCRICAO", nullable = false)
 	private String descricao;
@@ -32,12 +34,13 @@ public class Lancamento {
 	@Column(name = "DATA", nullable = false)
 	private LocalDate data;
 
-	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "PLANO_CONTA", referencedColumnName = "id", nullable = false)
+	@OneToOne
+	@JoinColumn(name = "ID_PLANO_CONTA", nullable = false)
 	private PlanoConta planoConta;
 	
+	@Enumerated(EnumType.STRING)
 	@Column(name = "TIPO_MOVIMENTO", nullable = false)
-	private TiposMovimento tipo;
+	private TipoMovimento tipo;
 	
 	@Column(name = "VALOR", nullable = false)
 	private double valor;
@@ -50,11 +53,11 @@ public class Lancamento {
 		this.idLancamento = idLancamento;
 	}
 
-	public int getConta() {
+	public Conta getConta() {
 		return conta;
 	}
 
-	public void setConta(int conta) {
+	public void setConta(Conta conta) {
 		this.conta = conta;
 	}
 
@@ -82,11 +85,11 @@ public class Lancamento {
 		this.planoConta = planoConta;
 	}
 
-	public TiposMovimento getTipo() {
+	public TipoMovimento getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(TiposMovimento tipo) {
+	public void setTipo(TipoMovimento tipo) {
 		this.tipo = tipo;
 	}
 
@@ -97,6 +100,4 @@ public class Lancamento {
 	public void setValor(double valor) {
 		this.valor = valor;
 	}
-
-
 }
