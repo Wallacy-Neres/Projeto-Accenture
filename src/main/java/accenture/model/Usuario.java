@@ -29,7 +29,7 @@ public class Usuario {
 	@Size(min = 2, max = 50)
 	private String nome;
 	
-	@Column(name = "LOGIN", nullable = false, length = 50)
+	@Column(name = "LOGIN", nullable = false, length = 50, unique = true)
 	@NotNull
 	@Size(min = 2, max = 50)
 	private String login;

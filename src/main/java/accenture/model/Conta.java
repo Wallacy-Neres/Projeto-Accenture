@@ -14,7 +14,7 @@ import javax.persistence.Table;
 import accenture.enums.TipoConta;
 
 @Entity
-@Table(name = "conta")
+@Table(name = "TB_CONTA")
 public class Conta {
 
 	@Id
@@ -41,6 +41,8 @@ public class Conta {
 		this.saldo = 0;
 	}
 	
+	public Conta() {}
+
 	public Long getId() {
 		return id;
 	}

@@ -20,7 +20,7 @@ public class LancamentoController {
 	private LancamentoService lancamentoService;
 	
 	@PostMapping("/cadastrar")
-	public ResponseEntity<Lancamento> PostCadastrar(@RequestBody Lancamento lancamento){	
+	public ResponseEntity<Lancamento> PostCadastrar(@RequestBody Lancamento lancamento){
 		return ResponseEntity.status(HttpStatus.CREATED).body(lancamentoService.CadastrarLancamento(lancamento));
 	}
 	

@@ -10,12 +10,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import accenture.enums.TiposMovimento;
+import accenture.enums.TipoMovimento;
 
 @Entity
-@Table(name = "tb_lancamento")
+@Table(name = "TB_LANCAMENTO")
 public class Lancamento {
 	
 	@Id
@@ -33,13 +34,13 @@ public class Lancamento {
 	@Column(name = "DATA", nullable = false)
 	private LocalDate data;
 
-	
-	@Column(name = "PLANO_CONTA")
-	private Long planoConta;
+	@OneToOne
+	@JoinColumn(name = "ID_PLANO_CONTA", nullable = false)
+	private PlanoConta planoConta;
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name = "TIPO_MOVIMENTO", nullable = false)
-	private TiposMovimento tipo;
+	private TipoMovimento tipo;
 	
 	@Column(name = "VALOR", nullable = false)
 	private double valor;
@@ -76,19 +77,19 @@ public class Lancamento {
 		this.data = data;
 	}
 
-	public Long getPlanoConta() {
+	public PlanoConta getPlanoConta() {
 		return planoConta;
 	}
 
-	public void setPlanoConta(Long planoConta) {
+	public void setPlanoConta(PlanoConta planoConta) {
 		this.planoConta = planoConta;
 	}
 
-	public TiposMovimento getTipo() {
+	public TipoMovimento getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(TiposMovimento tipo) {
+	public void setTipo(TipoMovimento tipo) {
 		this.tipo = tipo;
 	}
 

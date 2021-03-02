@@ -7,18 +7,20 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 import com.sun.istack.NotNull;
 
-import accenture.enums.TiposMovimento; 
+import accenture.enums.TipoMovimento;
 
 @Entity
 @Table(name = "TB_PLANO_CONTA")
 public class PlanoConta {
 	
-	@Column(name="ID")
+	@Column(name="ID_PLANO_CONTA")
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -28,18 +30,26 @@ public class PlanoConta {
 	@Size(min = 5, max = 100)
 	private String descricao;
 	
-	@Column(name = "LOGIN", nullable = false, length = 50)
-	@NotNull
-	@Size(min = 2, max = 50)
-	private String login;
+	@ManyToOne
+	@JoinColumn(name="ID_USUARIO")
+	private Usuario usuario;
 	
 	@Column(name = "PADRAO", length = 5)
 	private Boolean padrao;
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name = "TIPO_MOVIMENTO", nullable = false)
-	private TiposMovimento tiposMovimento;
+	private TipoMovimento tipoMovimento;
 
+	public PlanoConta() {}
+	
+	public PlanoConta(Usuario usuario, String descricao, boolean padrao, TipoMovimento receitas) {
+		this.usuario = usuario;
+		this.descricao = descricao;
+		this.padrao = padrao;
+		this.tipoMovimento = receitas;
+	}
+		
 	public Long getId() {
 		return id;
 	}
@@ -56,12 +66,13 @@ public class PlanoConta {
 		this.descricao = descricao;
 	}
 
-	public String getLogin() {
-		return login;
+
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-	public void setLogin(String login) {
-		this.login = login;
+	public void setUsuario(Usuario login) {
+		this.usuario = login;
 	}
 
 	public Boolean getPadrao() {
@@ -72,12 +83,12 @@ public class PlanoConta {
 		this.padrao = padrao;
 	}
 
-	public TiposMovimento getTiposMovimento() {
-		return tiposMovimento;
+	public TipoMovimento getTipoMovimento() {
+		return tipoMovimento;
 	}
 
-	public void setTiposMovimento(TiposMovimento tiposMovimento) {
-		this.tiposMovimento = tiposMovimento;
+	public void setTipoMovimento(TipoMovimento tiposMovimento) {
+		this.tipoMovimento = tiposMovimento;
 	}	
 	
 	
