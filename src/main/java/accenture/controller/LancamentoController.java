@@ -8,19 +8,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import accenture.model.PlanoConta;
-import accenture.service.PlanoContaService;
+import accenture.model.Lancamento;
+import accenture.service.*;
+
 
 @RestController
-@RequestMapping("/planoconta")
-public class PlanoContaController {
+@RequestMapping("/lancamentos")
+public class LancamentoController {
 
 	@Autowired
-	private PlanoContaService planoContaService;
+	private LancamentoService lancamentoService;
 	
 	@PostMapping("/cadastrar")
-	public ResponseEntity<PlanoConta> PostCadastrar(@RequestBody PlanoConta planoConta){	
-		return ResponseEntity.status(HttpStatus.CREATED).body(planoContaService.CadastrarPlanoConta(planoConta));
+	public ResponseEntity<Lancamento> PostCadastrar(@RequestBody Lancamento lancamento){	
+		return ResponseEntity.status(HttpStatus.CREATED).body(lancamentoService.CadastrarLancamento(lancamento));
 	}
 	
 }

@@ -40,15 +40,6 @@ public class PlanoConta {
 	@Column(name = "TIPO_MOVIMENTO", nullable = false)
 	private TiposMovimento tiposMovimento;
 
-	public PlanoConta() {}
-	
-	public PlanoConta(String login, String descricao, Boolean padrao, TiposMovimento tiposMovimento) {
-		this.login = login;
-		this.descricao = descricao;
-		this.padrao = padrao;
-		this.tiposMovimento = tiposMovimento;
-	}
-	
 	public Long getId() {
 		return id;
 	}
