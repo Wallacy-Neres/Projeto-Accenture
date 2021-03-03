@@ -1,6 +1,6 @@
 package accenture.enums;
 
-  public enum TiposMovimento {
+  public enum TipoMovimento {
 	  RECEITAS("R"), 
 	  DESPESAS ("D"), 
 	  TRANSFERENCIAS_CONTAS("TC"), 
@@ -8,7 +8,7 @@ package accenture.enums;
 	  
 	  private String tipoMovimento;
 	  
-	  private TiposMovimento(String tipoConta) {
+	  private TipoMovimento(String tipoMovimento) {
 		  this.tipoMovimento = tipoMovimento;
 	  }
 	  
