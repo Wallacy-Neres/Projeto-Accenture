@@ -18,7 +18,7 @@ Sumário
  - Murilo: Cadastro de Lançamento
  - Rafael: Cadastro de Usuário, Conta e Plano de Contas e listagem dos Planos de Contas
  - Wallacy: Login, autenticação com Token e listagem dos Planos de Contas
- - Wendell: Implementação da classe Conta
+ - Wendell: Implementação da classe Conta e validação com o JWT
  
  # Estrutura do Projeto
  
