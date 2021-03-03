@@ -29,6 +29,7 @@ public class LancamentoController {
 		if (!Authorization.isEmpty() && autenticacao.validaToken(Authorization))
 			return ResponseEntity.status(HttpStatus.CREATED).body(lancamentoService.CadastrarLancamento(lancamento));
 		return null;
+
 	}
 	
 }

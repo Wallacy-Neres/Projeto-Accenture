@@ -33,7 +33,7 @@ public class UsuarioService {
 	private PlanoContaRepository planoContaRepository;
 	
 	@Autowired
-    private TokenService tokenService;
+  private TokenService tokenService;
 	
 //    @Autowired
 //    public UsuarioService(TokenService tokenService){
@@ -61,7 +61,7 @@ public class UsuarioService {
 //				String authHeader = "Basic " + new String(encodedAuth);
 //
 //				user.get().setToken(authHeader);
-		        user.get().setToken(TokenService.JWT_PREFIX + tokenService.geraToken(usuario.get()));
+		    user.get().setToken(TokenService.JWT_PREFIX + tokenService.geraToken(usuario.get()));
 				user.get().setNome(usuario.get().getNome());
 				user.get().setCodigo(usuario.get().getCodigo());
 
