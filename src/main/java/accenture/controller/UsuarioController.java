@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import accenture.DTO.UsuarioLoginDTO;
 import accenture.model.Usuario;
 import accenture.model.UsuarioLogin;
-import accenture.model.DTO.UsuarioLoginDTO;
 import accenture.service.UsuarioService;
 
 @RestController

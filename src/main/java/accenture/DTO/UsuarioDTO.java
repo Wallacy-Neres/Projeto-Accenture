@@ -1,4 +1,4 @@
-package accenture.model;
+package accenture.DTO;
 
 public class UsuarioDTO {
 	

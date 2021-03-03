@@ -1,8 +1,8 @@
 package accenture.enums;
 
   public enum TipoConta {
-	  CONTA_BANCARIA("BC"),
-	  CONTA_CORRENTE ("CC");
+	  CONTA_DEBITO("Conta Débito"),
+	  CONTA_CREDITO ("C Crédito");
 	  
 	  private String tipoConta;
 	  

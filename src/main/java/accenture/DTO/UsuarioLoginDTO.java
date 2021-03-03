@@ -1,4 +1,4 @@
-package accenture.model.DTO;
+package accenture.DTO;
 
 import accenture.model.UsuarioLogin;
 
