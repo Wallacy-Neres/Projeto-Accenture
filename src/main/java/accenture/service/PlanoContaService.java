@@ -54,5 +54,19 @@ public class PlanoContaService {
 		}
 		return listaDto;
 	}
-	
+
+    public List<PlanoContaDTO> listarPlanosContasUsuario(String login) {
+		List<PlanoConta> lista = repository.findAllByLogin(login);
+		List<PlanoContaDTO> listaDto = new ArrayList<>();
+		for (PlanoConta plano : lista) {
+			PlanoContaDTO dto = new PlanoContaDTO();
+			dto.setId(plano.getId());
+			dto.setDescricao(plano.getDescricao());
+			dto.setLogin(plano.getUsuario().getLogin());
+			dto.setTipoMovimento(plano.getTipoMovimento());
+
+			listaDto.add(dto);
+		}
+		return listaDto;
+    }
 }
