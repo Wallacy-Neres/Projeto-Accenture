@@ -27,12 +27,12 @@ public class PlanoContaController {
 		else
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 	}
-	
+	/*
 	@GetMapping
 	public ResponseEntity<List<PlanoContaDTO>> GetPlanoConta(){
 		return ResponseEntity.ok(planoContaService.listarTodos());
 	}
-
+	*/
 	@GetMapping("/{login}")
 	public ResponseEntity<List<PlanoContaDTO>> GetPlanoContaUsuario(@PathVariable String login){
 		return ResponseEntity.ok(planoContaService.listarPlanosContasUsuario(login));
