@@ -23,7 +23,7 @@ Sumário
  Integrantes da equipe e suas contribuições:
  
  - Lucas: Cadastro de Plano de Contas padrão e de Lancamentos; e documentação da api no git
- - Murilo: Cadastro de Lançamento
+ - Murilo: Cadastro de Lançamento e Cadastro de Plano de Contas
  - Rafael: Cadastro de Usuário, Conta e Plano de Contas, extrato e listagem dos Planos de Contas
  - Wallacy: Login, autenticação com Token (JWT), extrato e listagem dos Planos de Contas
  - Wendell: Implementação da classe Conta, validação e autenticação com o Token (JWT)
