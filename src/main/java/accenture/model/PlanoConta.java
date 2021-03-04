@@ -89,7 +89,16 @@ public class PlanoConta {
 
 	public void setTipoMovimento(TipoMovimento tiposMovimento) {
 		this.tipoMovimento = tiposMovimento;
-	}	
-	
-	
+	}
+
+	@Override
+	public String toString() {
+		return "PlanoConta{" +
+				"id=" + id +
+				", descricao='" + descricao + '\'' +
+				", usuario=" + usuario +
+				", padrao=" + padrao +
+				", tipoMovimento=" + tipoMovimento +
+				'}';
+	}
 }

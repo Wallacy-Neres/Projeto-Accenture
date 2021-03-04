@@ -1,5 +1,6 @@
 package accenture.controller;
 
+import accenture.DTO.LancamentoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,9 +26,9 @@ public class LancamentoController {
 	private AutenticacaoService autenticacao;
 
 	@PostMapping("/cadastrar")
-	public ResponseEntity<Lancamento> PostCadastrar(@RequestBody Lancamento lancamento, @RequestHeader String Authorization){
+	public ResponseEntity<LancamentoDTO> PostCadastrar(@RequestBody LancamentoDTO lancamentoDTO, @RequestHeader String Authorization){
 		if (!Authorization.isEmpty() && autenticacao.validaToken(Authorization))
-			return ResponseEntity.status(HttpStatus.CREATED).body(lancamentoService.CadastrarLancamento(lancamento));
+			return ResponseEntity.status(HttpStatus.CREATED).body(lancamentoService.CadastrarLancamento(lancamentoDTO));
 		return null;
 
 	}

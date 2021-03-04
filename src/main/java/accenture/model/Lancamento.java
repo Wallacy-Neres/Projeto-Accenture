@@ -22,7 +22,7 @@ public class Lancamento {
 	@Id
 	@Column(name = "ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idLancamento;
+	private Long idLancamento;
 	
 	@ManyToOne
 	@JoinColumn(name="ID_CONTA")
@@ -45,11 +45,15 @@ public class Lancamento {
 	@Column(name = "VALOR", nullable = false)
 	private double valor;
 
-	public int getIdLancamento() {
+	@ManyToOne
+	@JoinColumn(name="ID_CONTA_DESTINO")
+	private Conta contaDestino;
+
+	public Long getIdLancamento() {
 		return idLancamento;
 	}
 
-	public void setIdLancamento(int idLancamento) {
+	public void setIdLancamento(Long idLancamento) {
 		this.idLancamento = idLancamento;
 	}
 
@@ -99,5 +103,22 @@ public class Lancamento {
 
 	public void setValor(double valor) {
 		this.valor = valor;
+	}
+
+	public Conta getContaDestino() {return contaDestino;}
+
+	public void setContaDestino(Conta contaDestino) {this.contaDestino = contaDestino;}
+
+	@Override
+	public String toString() {
+		return "Lancamento{" +
+				"idLancamento=" + idLancamento +
+				", conta=" + conta +
+				", descricao='" + descricao + '\'' +
+				", data=" + data +
+				", planoConta=" + planoConta +
+				", tipo=" + tipo +
+				", valor=" + valor +
+				'}';
 	}
 }
