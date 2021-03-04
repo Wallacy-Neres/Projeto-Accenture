@@ -23,10 +23,7 @@ public class UsuarioController {
 	private UsuarioService usuarioService;
 	
 	@PostMapping("/cadastrar")
-	public ResponseEntity<Usuario> PostCadastrar(@RequestBody Usuario user){
-		//if(usuarioService.checaDuplicidade(user) != null)
-			//return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
-		
+	public ResponseEntity<Usuario> PostCadastrar(@RequestBody Usuario user){		
 		return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.CadastrarUsuario(user));
 	}
 	
@@ -40,5 +37,4 @@ public class UsuarioController {
 		userLoginDTO.setToken(user.get().getToken());
 		return ResponseEntity.ok(userLoginDTO);
 	}
-	
 }

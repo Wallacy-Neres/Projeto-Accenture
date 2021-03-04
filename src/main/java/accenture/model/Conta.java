@@ -78,4 +78,15 @@ public class Conta {
 	public void setSaldo(float saldo) {
 		this.saldo = saldo;
 	}
+
+	@Override
+	public String toString() {
+		return "Conta{" +
+				"id=" + id +
+				", usuario=" + usuario +
+				", numero='" + numero + '\'' +
+				", tipoConta=" + tipoConta +
+				", saldo=" + saldo +
+				'}';
+	}
 }
