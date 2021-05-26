@@ -31,7 +31,6 @@ public class LancamentoService {
 	private ContaRepository contaRepository;
 
 	public LancamentoDTO CadastrarLancamento(LancamentoDTO lancamentoDTO) {
-
 		// instancia da classe Lancamento a ser manuseada
 		Lancamento lancamento = new Lancamento();
 
@@ -81,7 +80,6 @@ public class LancamentoService {
 		}
 
 		// Persistindo Lancamento no banco de dados
-		System.out.println(" ------------------------ CONTA DESTINO : " + lancamento.getContaDestino());
 		lancamento = lancamentoRepository.save(lancamento);
 
 		return new LancamentoDTO(lancamento); // Retorna DTO

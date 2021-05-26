@@ -6,7 +6,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(HttpStatus.NOT_FOUND)
 public class RecursoNaoEncontrado extends RuntimeException{
 
-    public RecursoNaoEncontrado(String mensagem){
+	private static final long serialVersionUID = 1L;
+
+	public RecursoNaoEncontrado(String mensagem){
         super(mensagem);
     }
 }

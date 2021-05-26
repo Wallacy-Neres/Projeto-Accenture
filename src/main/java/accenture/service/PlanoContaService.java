@@ -44,12 +44,7 @@ public class PlanoContaService {
 		List<PlanoConta> lista = repository.findAll();
 		List<PlanoContaDTO> listaDto = new ArrayList<>();
 		for (PlanoConta plano : lista) {
-			PlanoContaDTO dto = new PlanoContaDTO();
-			dto.setId(plano.getId());
-			dto.setDescricao(plano.getDescricao());
-			dto.setLogin(plano.getUsuario().getLogin());
-			dto.setTipoMovimento(plano.getTipoMovimento());
-			
+			PlanoContaDTO dto = new PlanoContaDTO(plano);
 			listaDto.add(dto);
 		}
 		return listaDto;
@@ -59,12 +54,7 @@ public class PlanoContaService {
 		List<PlanoConta> lista = repository.findAllByLogin(login);
 		List<PlanoContaDTO> listaDto = new ArrayList<>();
 		for (PlanoConta plano : lista) {
-			PlanoContaDTO dto = new PlanoContaDTO();
-			dto.setId(plano.getId());
-			dto.setDescricao(plano.getDescricao());
-			dto.setLogin(plano.getUsuario().getLogin());
-			dto.setTipoMovimento(plano.getTipoMovimento());
-
+			PlanoContaDTO dto = new PlanoContaDTO(plano);
 			listaDto.add(dto);
 		}
 		return listaDto;

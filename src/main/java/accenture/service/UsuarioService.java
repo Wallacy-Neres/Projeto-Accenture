@@ -28,17 +28,12 @@ public class UsuarioService {
 	
 	@Autowired
 	private ContaRepository contaRepository;
-
+	
 	@Autowired
 	private PlanoContaRepository planoContaRepository;
 	
 	@Autowired
-  private TokenService tokenService;
-	
-//    @Autowired
-//    public UsuarioService(TokenService tokenService){
-//        this.tokenService = tokenService;
-//    }
+	private TokenService tokenService;
 	
 	public Usuario CadastrarUsuario(Usuario usuario) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -56,11 +51,6 @@ public class UsuarioService {
 
 		if (usuario.isPresent()) {
 			if (encoder.matches(user.get().getSenha(), usuario.get().getSenha())) {
-//				String auth = user.get().getLogin() + ":" + user.get().getSenha();
-//				byte[] encodedAuth = Base64.encodeBase64(auth.getBytes(Charset.forName("US-ASCII")));
-//				String authHeader = "Basic " + new String(encodedAuth);
-//
-//				user.get().setToken(authHeader);
 		    user.get().setToken(TokenService.JWT_PREFIX + tokenService.geraToken(usuario.get()));
 				user.get().setNome(usuario.get().getNome());
 				user.get().setCodigo(usuario.get().getCodigo());
@@ -70,19 +60,6 @@ public class UsuarioService {
 		}
 		return null;
 	}
-
-	//public String checaDuplicidade(Usuario user) {
-		//if (repository.findByEmail(user.getEmail()) != null)
-			//return "Email já existente.";
-		//else if (buscaPorCpf(user.getCpf()) != null)
-			//return "Cpf já existente.";
-
-		//return null;
-	//}
-
-	// public Usuario buscaPorEmail(String email) {
-	// return repository.findByEmail(email);
-	// }
 
 	public Usuario buscaPorCpf(String cpf) {
 		return usuarioRepository.findByCpf(cpf);

@@ -11,14 +11,18 @@ public class PlanoContaDTO {
 	private String login;
 	private TipoMovimento tipoMovimento;
 	
+	public PlanoContaDTO(PlanoConta plano) {
+		this.id = plano.getId();
+		this.login = plano.getUsuario().getLogin();
+		this.descricao = plano.getDescricao();
+		this.tipoMovimento = plano.getTipoMovimento();
+	}
+	
 	public static PlanoContaDTO responsePlanoContaDTO(PlanoConta plano) {
-		PlanoContaDTO planoContaDTO = new PlanoContaDTO();
-		planoContaDTO.setId(plano.getId());
-		planoContaDTO.setLogin(plano.getUsuario().getLogin());
-		planoContaDTO.setDescricao(plano.getDescricao());
-		planoContaDTO.setTipoMovimento(plano.getTipoMovimento());
+		PlanoContaDTO planoContaDTO = new PlanoContaDTO(plano);
 		return planoContaDTO;
 	}
+	
 	
 	public Long getId() {
 		return id;
